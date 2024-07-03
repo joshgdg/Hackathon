@@ -1,0 +1,22 @@
+# more details this workflow and other at https://github.com/didier-durand/gcloud-tests
+name: Deploy to GCE
+
+on
+  push:
+    branches:
+    - main
+
+env:
+  
+  PROJECT_ID: ${{ secrets.GCE_PROJECT }}
+  GCE_INSTANCE: jenkins
+  GCP_INSTANCE_ZONE: europe-southwest1-a
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name:
+      run: npm start 
