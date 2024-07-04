@@ -13,10 +13,17 @@ env:
   GCP_INSTANCE_ZONE: europe-southwest1-a
 
 jobs:
-  setup-build-publish-deploy:
+  analyzer:
+    defaults:
+      run:
+        working-directory: .
     name: Setup, Build, Publish, Deploy
     runs-on: ubuntu-latest
-
     steps:
-    - name: Deploy
-      run: npm start 
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.0
+          cache: npm
+      - name: Deploy
+        run: npm start 
