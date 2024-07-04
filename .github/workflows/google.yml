@@ -25,5 +25,9 @@ jobs:
         with:
           node-version: 20.0
           cache: npm
+          
+      - name: Install dependecies
+        run: npm install
+        
       - name: Deploy
         run: npm start 
